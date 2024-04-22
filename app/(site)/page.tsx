@@ -1,7 +1,10 @@
 import Header from "@/components/Header"
 import ListItem from "@/components/ListItem"
+import supabase from "@/utilities/supabase"
+import { useEffect, useState } from "react"
 
-export default function Home() {
+export default async function Home() {
+  const { data } = await supabase.from('songs').select()
   return(
     <div className="
       bg-neutral-900
@@ -46,7 +49,9 @@ export default function Home() {
           <h1 className="text-white text-2xl font semibold">Newest Songs</h1>
         </div>
         <div>
-          List of Songs!
+          <pre>
+            {JSON.stringify(data, null, 2)}
+          </pre>
         </div>
       </div>
     </div>
