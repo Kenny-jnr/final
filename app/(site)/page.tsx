@@ -4,7 +4,7 @@ import supabase from "@/utilities/supabase"
 import { useEffect, useState } from "react"
 
 export default async function Home() {
-  const { data } = await supabase.from('songs').select()
+  const { data } = await supabase.from('songs').select('song_name, musician, streams, song_length')
   return(
     <div className="
       bg-neutral-900
